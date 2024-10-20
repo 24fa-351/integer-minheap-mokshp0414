@@ -5,7 +5,7 @@
 
 #define KEY_NOT_PRESENT -1
 
-// Create a new heap with a given capacity
+// Create a new heap
 heap_t *heap_create(int capacity) {
     heap_t *heap = (heap_t *)malloc(sizeof(heap_t));
     heap->data = (heap_node_t *)malloc(sizeof(heap_node_t) * capacity);
@@ -14,7 +14,7 @@ heap_t *heap_create(int capacity) {
     return heap;
 }
 
-// Free the memory used by the heap
+// Free the memory 
 void heap_free(heap_t *heap) {
     free(heap->data);
     free(heap);
@@ -40,7 +40,6 @@ unsigned int heap_right_child(unsigned int index) {
     return 2 * index + 2;
 }
 
-// Get the level of the node in the heap
 unsigned int heap_level(unsigned int index) {
     unsigned int level = 0;
     while (index > 0) {
@@ -50,7 +49,7 @@ unsigned int heap_level(unsigned int index) {
     return level;
 }
 
-// Print the heap's structure
+// Print
 void heap_print(heap_t *heap) {
     for (int ix = 0; ix < heap_size(heap); ix++) {
         printf("%3d - %3d : " HEAP_KEY_FORMAT "\n", heap_level(ix), ix,
@@ -66,7 +65,7 @@ void heap_swap(heap_t *heap, int index1, int index2) {
     heap->data[index2] = temp;
 }
 
-// Restore heap property by bubbling up
+// Restore heap property
 void heap_bubble_up(heap_t *heap, int index) {
     while (index > 0 && heap->data[index].key < heap->data[heap_parent(index)].key) {
         heap_swap(heap, index, heap_parent(index));
@@ -74,7 +73,7 @@ void heap_bubble_up(heap_t *heap, int index) {
     }
 }
 
-// Restore heap property by bubbling down
+// Restore heap property
 void heap_bubble_down(heap_t *heap, int index) {
     unsigned int left = heap_left_child(index);
     unsigned int right = heap_right_child(index);
