@@ -1,8 +1,5 @@
-
 #ifndef HEAP_H
 #define HEAP_H
-
-// a min heap
 
 typedef unsigned long long heap_key_t;
 typedef void* heap_value_t;
