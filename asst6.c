@@ -4,10 +4,6 @@
 
 #include "heap.h"
 
-/*
-Assignment 5: integer minheap
-*/
-
 unsigned long long rand_between(unsigned long long min,
                                 unsigned long long max) {
     unsigned long long range = max - min;
